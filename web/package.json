@@ -1,0 +1,29 @@
+{
+  "name": "airboard",
+  "version": "0.0.1",
+  "description": "Web transmitter/receiver for AirBoard",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhaofengli/airboard.git"
+  },
+  "author": "Zhaofeng Li <hello@zhaofeng.li>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/zhaofengli/airboard/issues"
+  },
+  "homepage": "https://github.com/zhaofengli/airboard#readme",
+  "dependencies": {
+    "babel-preset-env": "^1.4.0",
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^3.0.4",
+    "gulp-htmlmin": "^3.0.0",
+    "libfec": "^1.1.0"
+  }
+}

@@ -1,0 +1,3 @@
+[submodule "web/quiet-js"]
+	path = web/quiet-js
+	url = https://github.com/quiet/quiet-js
