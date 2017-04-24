@@ -1,3 +1,6 @@
 [submodule "web/quiet-js"]
 	path = web/quiet-js
 	url = https://github.com/quiet/quiet-js
+[submodule "android/libraries/org.quietmodem.Quiet"]
+	path = android/libraries/org.quietmodem.Quiet
+	url = https://github.com/quiet/org.quietmodem.Quiet
