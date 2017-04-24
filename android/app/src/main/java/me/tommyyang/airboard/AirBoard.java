@@ -1,9 +1,13 @@
 package me.tommyyang.airboard;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.media.AudioManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
@@ -44,7 +48,15 @@ public class AirBoard extends InputMethodService
         if (!frameSubscription.isUnsubscribed()) {
             frameSubscription.unsubscribe();
         }
-        InputConnection ic = getCurrentInputConnection() ;
+
+        int granted = ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO);
+        if (granted == PackageManager.PERMISSION_GRANTED) {
+            subscribeToFrames();
+        }
+    }
+
+    private void subscribeToFrames() {
+        InputConnection ic = getCurrentInputConnection();
         frameSubscription = FrameReceiverObservable.create(this, "ultrasonic-experimental").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(buf -> {
             int keycode = Integer.parseInt(new String(buf, Charset.forName("UTF-8")));
             switch (keycode) {
@@ -115,7 +127,6 @@ public class AirBoard extends InputMethodService
 
     @Override
     public void onKey(int primaryCode, int[] keyCodes) {
-
         InputConnection ic = getCurrentInputConnection() ;
         playclick(primaryCode);
         switch (primaryCode) {
